@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta property="site_name" content="{{ SITENAME }} | 记录，分享，交流的空间"/>
+    <meta property="title" content="{% block ogtitle %}{{ SITENAME }} | 记录，分享，交流的空间{%endblock%}"/>
+    <meta property="url" content="{% block ogurl %}{{ SITEURL }}{%endblock%}"/>
+
+    <title>{% block title %}{{ SITENAME }} | 记录，分享，交流的空间{%endblock%}</title>
+    
+    <link href="https://plus.google.com/u/0/103202311888456538586/posts" ?rel=author>
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap-responsive.min.css" type="text/css" />
+    
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css" type="text/css" />
+    {% if FEED_ALL_ATOM %}
+    <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+    {% endif %}
+
+</head>
+
+<body id="index">
+{% include 'github.html' %}
+    <div class="row-fluid red-head">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a>{{ SITENAME }} {% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a>
+                </h1>
+                
+                <div class="nav"> 
+				<ul>
+			    	<li><a href="{{ SITEURL }}">Home</a></li>
+			    	<li><a href="{{ SITEURL }}/archives">归档</a></li>
+                	{% for page in PAGES %}
+                    	<li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+                	{% endfor %}
+				</ul> 
+			</div>
+            </header><!-- /#banner -->
+            
+        </div>
+    </div><!-- /#header -->
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+                {% block content %}{% endblock %}
+                {% block sidebar %}{% endblock %}
+
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        <a href="http://www.mak-blog.com/">Mak-theme</a> is edited by <a href="http://jsliang.com/">Fresh</a>.
+                    </p>
+                    <p>
+                        This blog is proudly powered by <a href="http://getpelican.com/">Pelican</a>, hosted on <a href="https://github.com/">Github</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+{% include 'analytics.html' %}
+{% include 'piwik.html' %}
+{% include 'disqus_script.html' %}
+    <script src="{{ SITEURL }}/theme/js/jquery.min.js"></script>
+    <script type="text/javascript">
+	jQuery(document).ready(function($){
+		if($('a:has(img)').length > 0){
+			$.getScript("{{ SITEURL }}/theme/js/slimbox2.js");
+		};
+	});
+	</script>
+    <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
+</body>
+</html>
